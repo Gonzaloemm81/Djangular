@@ -1,0 +1,56 @@
+<section class="secCol2" id="bloque-calculo">
+  <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+  <div class="m-3">
+    <h3>¿Querés hacer un envío?</h3>
+    
+     
+      <input type="text" class="form-control" id="peso" placeholder="Peso kg" formControlName="peso" />
+      
+        <div *ngIf="Peso?.errors && Peso?.touched">
+            <p *ngIf="Peso?.hasError('required')" class="text-danger">
+              Establecer el peso del paquete que desea enviar.
+            </p>
+            <p *ngIf="Peso?.hasError('pattern')" class="text-danger">
+              El campo solo debe contener números.
+            </p>
+            
+        </div>
+
+    <select title="opcionPeso" formControlName="tipodeenvio" id="tipodeenvio">
+      <option value="">Tipo de Envio</option>
+      <option value="A">A Ligero</option>
+      <option value="B">B Pesado</option>
+      <option value="C">C Express</option>
+    </select>
+    <select title="opcionSucursal" formControlName="salida" id="salida">
+      <option value="">Salida</option>
+      <option value="Sucursal">Sucursal Córdoba</option>
+      <option value="Sucursal">Sucursal Corrientes</option>
+      <option value="Sucursal">Sucursal Chaco</option>
+    </select>
+    <select title="opcionDestino" formControlName="destino" id="destino">
+      <option value="">Destino</option>
+      <option value="Sucursal">Sucursal Buenos Aires</option>
+      <option value="Sucursal">Sucursal Córdoba</option>
+      <option value="Sucursal">Sucursal Formosa</option>
+    </select>
+    <input type="text" placeholder="Precio" formControlName="precio" id="precio"required />
+
+    <div *ngIf="Precio?.errors && Precio?.touched">
+      <p *ngIf="Precio?.hasError('required')" class="text-danger">
+        Establecer el precio del paquete que desea enviar.
+      </p>
+      <p *ngIf="Precio?.hasError('pattern')" class="text-danger">
+        El campo solo debe contener números.
+      </p>
+      
+         
+  </div>
+
+    
+      <button type="submit" onclick="return enviarCalculo();">Calcular</button>
+      <p class="errorE" id="errorE"></p>
+    </div>
+    </form>
+  
+</section>

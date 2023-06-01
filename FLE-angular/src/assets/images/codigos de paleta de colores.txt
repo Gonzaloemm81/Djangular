@@ -1,0 +1,5 @@
+naranja central    fe9b44
+naranja derecha    ff7832
+naranja izquierda  fe691c
+celeste            98bedf
+gris               d9dadb

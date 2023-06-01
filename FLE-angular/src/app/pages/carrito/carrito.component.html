@@ -1,0 +1,31 @@
+<section>
+  <h3>Registro de Compra</h3>
+  <form>
+    <label for="nombre_cliente">Nombre del Cliente:</label>
+    <input type="text" id="nombre_cliente" name="nombre_cliente" required />
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" required />
+    <label for="producto">Producto:</label>
+    <div class="producto">
+      <!-- <img src="icono_producto.jpg" alt="icono del producto"> -->
+      <div class="datos_producto">
+        <span class="nombre_producto">Nombre del Producto</span>
+        <span class="precio_producto">$10.00</span>
+        <!-- <img src="icono_eliminar_producto.png" alt="icono para eliminar el producto"/> -->
+      </div>
+    </div>
+    <div class="subtotal">
+      <span>Subtotal:</span>
+      <span>$10.00</span>
+    </div>
+    <div class="impuestos">
+      <span>Impuestos (IVA Argentina 21%):</span>
+      <span>$2.10</span>
+    </div>
+    <div class="total">
+      <span>Total:</span>
+      <span>$12.10</span>
+    </div>
+    <input type="submit" value="Registrar Pedido" />
+  </form>
+</section>

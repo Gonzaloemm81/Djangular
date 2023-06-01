@@ -1,0 +1,33 @@
+<section>
+  <form action="#" method="post" [formGroup]="form" (ngSubmit)="onEnviar($event)">
+    <h3>Contacto</h3>
+
+    <label for="motivo">Motivo:</label>
+    <input type="text" id="motivo" name="motivo" formControlName="motivo" />
+    <div *ngIf="Motivo?.errors && Motivo?.touched">
+      <p *ngIf="Motivo?.hasError('required')" class="text-danger">
+        Motivo Requerido</p></div>
+
+    <label for="nombre">Nombre y Apellido:</label>
+    <input type="text" id="nombre" name="nombre" formControlName="nombre" />
+    <div *ngIf="Nombre?.errors && Nombre?.touched">
+      <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+        Nombre y Apellido Requerido</p></div>
+
+    <label for="correo">Correo Electrónico:</label>
+    <input type="email" id="correo" formControlName="mail" />
+    <div *ngIf="Mail?.errors && Mail?.touched">
+      <p *ngIf="Mail?.hasError('required')" class="text-danger">
+        Email Requerido</p>
+      <p *ngIf="Mail?.errors?.email" class="text-danger">
+        Completar con un email válido</p></div>
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" formControlName="mensaje"></textarea>
+    <div *ngIf="Mensaje?.errors && Mensaje?.touched">
+      <p *ngIf="Mensaje?.hasError('required')" class="text-danger">
+        Mensaje Requerido</p></div>
+
+    <input type="submit" value="Enviar" />
+  </form>
+</section>

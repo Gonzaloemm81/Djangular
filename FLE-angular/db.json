@@ -1,0 +1,19 @@
+{
+"productos": [
+    {
+    "title": "Servicio Lite",
+    "description": "Nuestro servicio de paquetería light es rápido, seguro y económico para envíos pequeños. Recolectamos, transportamos y entregamos documentos, sobres y paquetes ligeros. Ofrecemos seguimiento en tiempo real y atención al cliente excepcional. ¡Confía en nosotros para un envío confiable y eficiente!",
+    "price": 3000
+    },
+    {
+    "title": "Servicio Standard",
+    "description": "Envía paquetes de tamaño mediano de forma segura y eficiente con nuestro servicio de paquetería medio. Recolectamos, transportamos y entregamos tus envíos en tiempo y forma. ¡Confía en nosotros para una solución confiable!",
+    "price": 6000
+    },
+    {
+    "title": "Servicio Premium",
+    "description": "Nuestro servicio de paquetería premium se distingue por ofrecer una experiencia excepcional en el envío de tus paquetes. Garantizamos máxima seguridad, rapidez y atención personalizada en cada etapa del proceso. Confía en nuestro servicio premium para un envío de calidad superior.",
+    "price": 10000
+    }
+  ]
+}

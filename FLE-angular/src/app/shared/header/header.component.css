@@ -1,0 +1,34 @@
+header{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    
+}
+.headerCont{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerCont button{
+    height: 1.5rem;
+}
+.logo{
+    height: 2rem;
+}
+button a{
+    text-decoration: none;
+    color:inherit
+}
+button{
+    height: 3em;
+    width: auto;
+    background-color: rgb(73, 139, 230);
+    color: #fff;
+    padding: 0 20px ;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: orange;
+    color: black;
+}

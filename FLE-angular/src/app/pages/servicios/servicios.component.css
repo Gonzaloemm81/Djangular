@@ -1,0 +1,66 @@
+section{
+    text-align: center;
+    height: auto;
+    width: 60%;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 20px;
+    margin: 30px auto;
+    padding: 40px;
+}
+.secCol3{
+    background-color: rgb(255, 119, 0);
+}
+input{
+    width: 15em;
+    border-radius: 20px;
+    border: none;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+button a{
+    text-decoration: none;
+    color:inherit
+}
+button{
+    margin-top: 0.5rem;
+    height: 3em;
+    width: auto;
+    background-color: black;
+    color: #fff;
+    padding: 0 20px ;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgb(255, 119, 0);
+    color: black;
+}
+.card{
+  margin: 10px;
+  padding: 20px;
+  justify-content: space-between;
+  
+  box-shadow: 5px 5px 5px rgb(197, 56, 0);
+}
+@media (min-width: 768px) and (max-width: 1250px) {
+    .card{
+        width: 100%;
+    }
+    section{
+        flex-flow: row wrap;
+    }
+}
+@media (min-width:320px) and (max-width: 768px) {
+    section {
+      width: 100%;
+      border-radius: 0%;
+      margin: 0%;
+    }
+    section{
+        flex-flow: row wrap;
+    }
+    .card{
+        width: 100%;
+    }
+}
