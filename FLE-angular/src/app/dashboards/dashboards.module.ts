@@ -12,6 +12,9 @@ import { UserComponent } from './user/user.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    AdminComponent
   ]
 })
 export class DashboardsModule { }

@@ -1,0 +1,19 @@
+section {
+    height: 640px;
+    width: 60%;
+    background-color: rgb(23, 23, 23);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    border-radius: 20px;
+    margin: 30px auto;
+    padding: 5% 10%;
+ 
+   
+  }
+  table{
+    
+    width: 100%;
+  }

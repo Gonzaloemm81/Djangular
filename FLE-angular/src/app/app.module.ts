@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardsModule } from './dashboards/dashboards.module';
 
 
 
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     SharedModule,
     PagesModule,
+    DashboardsModule,
     AppRoutingModule
   ],
   providers: [],
