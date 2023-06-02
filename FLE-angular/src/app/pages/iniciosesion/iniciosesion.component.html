@@ -1,6 +1,6 @@
 <section class="inicio">
   <h1 class="display-5">Iniciar sesión</h1>
-  <form [formGroup]="iniciosesionForm"  class="mt-4">
+  <form [formGroup]="iniciosesionForm" (ngSubmit)="onEnviar($event)" class="mt-4">
     <div class="form-group">
       <input
         type="text"
@@ -42,7 +42,7 @@
     </div>
   
     <div class="form-check">
-      <input type="checkbox" id="recordarme" class="form-check-input" />
+      <input type="checkbox" id="recordarme" (ngModel)="recordarme" class="form-check-input" />
       <label for="recordarme" class="form-check-label">recordarme</label>
     </div>
   

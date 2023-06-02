@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardsModule } from './dashboards/dashboards.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,8 @@ import { DashboardsModule } from './dashboards/dashboards.module';
     SharedModule,
     PagesModule,
     AppRoutingModule,
-    DashboardsModule
+    DashboardsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
