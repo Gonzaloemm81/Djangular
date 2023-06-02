@@ -1,34 +1,54 @@
 <section class="inicio">
-  <h1>Iniciar sesión</h1>
-
-  <form action="" id="form">
-    <input
-      type="text"
-      placeholder="usuario"
-      id="usuario"
-      name="usuario"
-    /><br />
-    <span class="errorUsuario" id="errorUsuario"></span>
-    <input
-      type="password"
-      placeholder="contraseña"
-      name="password"
-      id="password"
-    /><br />
-    <span class="errorPassword" id="errorPassword"></span>
-
-    <div class="container">
-      <input type="checkbox" id="recordarme" /><label for="recordarme"
-        >recordarme</label
-      >
+  <h1 class="display-5">Iniciar sesión</h1>
+  <form [formGroup]="iniciosesionForm"  class="mt-4">
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="usuario"
+        id="usuario"
+        formControlName="user"
+        class="form-control"/>
+        <div *ngIf="User?.errors && User?.touched">
+          <p *ngIf="User?.hasError('required')" class="text-danger">
+            El usuario es obligatorio.
+          </p>
+          <p *ngIf="User?.errors?.['minlength']" class="text-danger">
+            El usuario debe contener almenos 8 caracteres.
+          </p>
+          <p *ngIf="User?.errors?.['maxlength']" class="text-danger">
+            El usuario debe contener máximo 20 caracteres.
+          </p>
+          <p *ngIf="User?.errors?.['pattern']" class="text-danger">
+            El usuario solo debe contener letras y/o números.
+          </p>
+        </div>
     </div>
-
-    <button class="ingresar" type="submit">Ingresar</button>
-    <button class="registrarse" type="submit">
-      <a href="registro">Registrarse</a>
+  
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="contraseña"
+        formControlName="password"
+        id="password"
+        class="form-control"/>
+        <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" class="text-danger">
+            la contraseña es obligatoria.
+          </p>
+          <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+            La contraseña debe contener almenos 8 caracteres. 
+          </p>
+        </div>
+    </div>
+  
+    <div class="form-check">
+      <input type="checkbox" id="recordarme" class="form-check-input" />
+      <label for="recordarme" class="form-check-label">recordarme</label>
+    </div>
+  
+    <button class="btn  mt-3" type="submit">Ingresar</button>
+    <button class="registrarse btn  mt-3  btn-outline-dark">
+      <a href="registro" >Registrarse</a>
     </button>
-
-    <span class="errorGeneral" id="errorGeneral"></span>
-    <span class="success" id="success"></span>
   </form>
 </section>
