@@ -21,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalculadoraComponent,
     CarritoComponent,
     ContactoComponent,
-    SucursalesComponent
+    SucursalesComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -36,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalculadoraComponent,
     CarritoComponent,
     ContactoComponent,
-    SucursalesComponent
+    SucursalesComponent,
+    
 
   ]
 })
