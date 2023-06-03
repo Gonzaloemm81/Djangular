@@ -8,7 +8,7 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 
 export class IniciosesionComponent implements OnInit{
   recordarme: boolean = false;
-  iniciosesionForm: any
+  iniciosesionForm: FormGroup
   constructor(private formBuilder: FormBuilder){
   this.iniciosesionForm = this.formBuilder.group({
     user:['',[Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],  
