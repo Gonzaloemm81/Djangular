@@ -33,7 +33,7 @@
         class="form-control"/>
         <div *ngIf="Password?.errors && Password?.touched">
           <p *ngIf="Password?.hasError('required')" class="text-danger">
-            la contraseña es obligatoria.
+            La contraseña es obligatoria.
           </p>
           <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
             La contraseña debe contener almenos 8 caracteres. 
