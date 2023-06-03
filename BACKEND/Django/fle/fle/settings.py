@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AppFLE',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +50,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
+
+#Configuracion del CORS 
+CORS_ORIGIN_WHITELIST = ["http://localhost"]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'fle.urls'
 
@@ -88,6 +96,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "AppFLE.CustomUser"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
