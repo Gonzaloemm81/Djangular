@@ -121,11 +121,11 @@
         <td *ngIf="user.is_staff">Si</td>
         <td *ngIf="!user.is_staff">No</td>
         <td>
-          <button id="4" class="btn btn-warning" onclick="getId()">
+          <button id="4" class="btn btn-warning">
             Modificar
           </button>
         </td>
-        <td><button class="btn btn-danger">Eliminar</button></td>
+        <td><button class="btn btn-danger" (click)="eliminarUsuario(user.id)">Eliminar</button></td>
       </tr>
     </tbody>
   </table>

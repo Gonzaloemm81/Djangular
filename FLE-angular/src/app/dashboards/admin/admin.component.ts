@@ -12,12 +12,10 @@ export class AdminComponent implements OnInit{
   usuarioForm: FormGroup;
   userForm: boolean = true;
 
-  idBotones: any;
+  usuarios: any; 
 
 
   // Consumo de la Api para ver usuarios
-  usuarios: any; 
-  id: any;
   constructor(private user: UsuariosService, 
             private formBuilder: FormBuilder){
 
@@ -31,6 +29,7 @@ export class AdminComponent implements OnInit{
       }
     })
     
+    
     // Validacion del formulario de nuevos usuarios
     this.usuarioForm = this.formBuilder.group({
       user: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],
@@ -41,9 +40,18 @@ export class AdminComponent implements OnInit{
     
     
   }
-  getId(){
-    alert(this.id)
+  actualizarUsuarios() {
+    this.user.obtenerUsuarios().subscribe({
+      next: (userData) => {
+        this.usuarios = userData;
+      },
+      error: (errorData) => {
+        console.error(errorData);
+      }
+    });
   }
+
+
   //Eliminar usuarios DELETE http 
   get User(){
     return this.usuarioForm.get('user');
@@ -56,19 +64,9 @@ export class AdminComponent implements OnInit{
   }
 
   abrirForm(){
-    this.userForm ? this.userForm = false: this.userForm = true
+    this.userForm = !this.userForm
   }
-  onEnviar(event:Event){
-    if (this.usuarioForm.valid){
-      alert('Creando usuario...')
-      this.usuarioForm.reset()
-    }
-    else{
-      this.usuarioForm.markAllAsTouched();
-    }
-
-   
-  }
+  
   
 
   ngOnInit(): void {
@@ -90,10 +88,22 @@ export class AdminComponent implements OnInit{
       response => {
         // Manejar la respuesta exitosa
         console.log(response);
-        this.usuarioForm.reset(); // Limpiar el formulario después de enviarlo
+        this.actualizarUsuarios() // Limpiar el formulario después de enviarlo
       },
       error => {
         // Manejar el error
+        console.error(error);
+      }
+    );
+  }
+  eliminarUsuario(id: number) {
+    this.user.eliminarUsuario(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.actualizarUsuarios();
+        // Realizar cualquier acción adicional necesaria, como actualizar la lista de usuarios
+      },
+      (error) => {
         console.error(error);
       }
     );
