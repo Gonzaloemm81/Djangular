@@ -17,7 +17,12 @@ url:String = 'http://localhost:8000/'
      return this.http.post(this.url + 'api/usuarios/',data);
   }
 
-  eliminarUsuarios(id:number): Observable<any>{
-    return this.http.delete(this.url + 'api/usuarios/'+id)
+  eliminarUsuario(id: number) {
+    const apiUrl = `${this.url}api/usuarios/${id}/`;
+    return this.http.delete(apiUrl);
+  }
+  modificarUsuario(id: number, usuario: any) {
+    const apiUrl = `${this.url}api/usuarios/${id}/`;
+    return this.http.put(apiUrl, usuario);
   }
 }
