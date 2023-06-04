@@ -1,10 +1,102 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit{
+  // Formulario de nuevo usuario
+  usuarioForm: FormGroup;
+  userForm: boolean = true;
 
+  idBotones: any;
+
+
+  // Consumo de la Api para ver usuarios
+  usuarios: any; 
+  id: any;
+  constructor(private user: UsuariosService, 
+            private formBuilder: FormBuilder){
+
+    // consumo de la Api para ver usuarios
+    this.user.obtenerUsuarios().subscribe({
+      next: (userData)=>{
+        this.usuarios = userData;
+      },
+      error:(errorData)=>{
+        console.error(errorData);
+      }
+    })
+    
+    // Validacion del formulario de nuevos usuarios
+    this.usuarioForm = this.formBuilder.group({
+      user: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],
+      email: ['',[Validators.required, Validators.email]] ,
+      password: ['',[Validators.required,Validators.minLength(8)]],
+      is_staff: ['',[Validators.required]],
+    })
+    
+    
+  }
+  getId(){
+    alert(this.id)
+  }
+  //Eliminar usuarios DELETE http 
+  get User(){
+    return this.usuarioForm.get('user');
+  }
+  get Email(){
+    return this.usuarioForm.get('email');
+  }
+  get Password(){
+    return this.usuarioForm.get('password');
+  }
+
+  abrirForm(){
+    this.userForm ? this.userForm = false: this.userForm = true
+  }
+  onEnviar(event:Event){
+    if (this.usuarioForm.valid){
+      alert('Creando usuario...')
+      this.usuarioForm.reset()
+    }
+    else{
+      this.usuarioForm.markAllAsTouched();
+    }
+
+   
+  }
+  
+
+  ngOnInit(): void {
+  }
+
+  agregarUsuario() {
+    if (this.usuarioForm.invalid) {
+      return;
+    }
+
+    const nuevoUsuario = {
+      username: this.usuarioForm.value.user,
+      email: this.usuarioForm.value.email,
+      password: this.usuarioForm.value.password,
+      is_staff: this.usuarioForm.value.is_staff // Cambia esto según la selección del usuario en el formulario
+    };
+
+    this.user.agregarUsuarios(nuevoUsuario).subscribe(
+      response => {
+        // Manejar la respuesta exitosa
+        console.log(response);
+        this.usuarioForm.reset(); // Limpiar el formulario después de enviarlo
+      },
+      error => {
+        // Manejar el error
+        console.error(error);
+      }
+    );
+  }
 }
+

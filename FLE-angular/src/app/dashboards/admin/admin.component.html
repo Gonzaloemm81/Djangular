@@ -1,44 +1,132 @@
 <section>
-<div class="container">
-  <table  class="table  table-striped table-dark text-center">
+  <div *ngIf="userForm">
+    <form
+      [formGroup]="usuarioForm"
+      action=""
+      class="container"
+      (ngSubmit)="agregarUsuario()"
+    >
+      <h2 class="text-light">Nuevo Usuario</h2>
+      <label class="text-light" for="usuario">Usuario:</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="user"
+        id="usuario"
+      />
+      <div *ngIf="User?.errors && User?.touched">
+        <p *ngIf="User?.hasError('required')" class="text-danger">
+          El usuario es obligatorio.
+        </p>
+        <p *ngIf="User?.errors?.['minlength']" class="text-danger">
+          El usuario debe contener almenos 6 caracteres.
+        </p>
+        <p *ngIf="User?.errors?.['maxlength']" class="text-danger">
+          El usuario debe contener un maximo de 20 caracteres.
+        </p>
+        <p *ngIf="User?.errors?.['pattern']" class="text-danger">
+          El usuario debe contener solamente letras y/o numeros.
+        </p>
+      </div>
+
+      <label class="text-light" for="email">Email:</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="email"
+        id="email"
+      />
+      <div *ngIf="Email?.errors && Email?.touched">
+        <p *ngIf="Email?.hasError('required')" class="text-danger">
+          El email es obligatorio.
+        </p>
+        <p *ngIf="Email?.errors?.['email']" class="text-danger">
+          El correo debe ser valido.
+        </p>
+      </div>
+
+      <label class="text-light" for="password">Contraseña:</label>
+      <input
+        class="form-control"
+        type="password"
+        formControlName="password"
+        id="password"
+      />
+      <div *ngIf="Password?.errors && Password?.touched">
+        <p *ngIf="Password?.hasError('required')" class="text-danger">
+          La contraseña es obligatoria.
+        </p>
+        <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+          El usuario debe contener almenos 8 caracteres.
+        </p>
+      </div>
+
+      <label class="text-light" for="">Es empleado:</label>
+      <br />
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-light">
+          <input
+            formControlName="is_staff"
+            type="radio"
+            name="options"
+            id="option1"
+            autocomplete="off"
+            checked
+            value="true"
+          />
+          Si
+        </label>
+        <label class="btn btn-outline-light">
+          <input
+            formControlName="is_staff"
+            type="radio"
+            name="options"
+            id="option2"
+            autocomplete="off"
+            value="false"
+          />
+          No
+        </label>
+      </div>
+      <br />
+      <br />
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+  </div>
+  <br />
+  <table class="table table-striped table-dark text-center">
     <thead>
       <tr>
+        <td colspan="3"><h2>Tabla Usuarios</h2></td>
+        <td colspan="3">
+          <button class="btn btn-warning" (click)="abrirForm()">
+            Añadir Usuario
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Email</th>
-        <th>Is Staff</th>
+        <th>Es empleado</th>
         <th>Modificar</th>
         <th>Eliminar</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let user of usuarios">
       <tr>
-        <td>brian polo</td>
-        <td>brian@gmail.com</td>
-        <td>1</td>
-        <td><button class="btn btn-warning">Modificar</button></td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td *ngIf="user.is_staff">Si</td>
+        <td *ngIf="!user.is_staff">No</td>
+        <td>
+          <button id="4" class="btn btn-warning" onclick="getId()">
+            Modificar
+          </button>
+        </td>
         <td><button class="btn btn-danger">Eliminar</button></td>
-
       </tr>
-      <tr>
-        <td>cristian</td>
-        <td>cristian@gmail.com</td>
-        <td>0</td>
-        <td><button class="btn btn-warning">Modificar</button></td>
-        <td><button class="btn btn-danger">Eliminar</button></td>
-
-
-      </tr>
-      <tr>
-        <td>gonzalo</td>
-        <td>gonzalo@gmail.com</td>
-        <td>1</td>
-        <td><button class="btn btn-warning">Modificar</button></td>
-        <td><button class="btn btn-danger">Eliminar</button></td>
-
-
-      </tr>
-      
     </tbody>
   </table>
-</div>
 </section>

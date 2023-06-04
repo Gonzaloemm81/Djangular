@@ -1,20 +1,25 @@
 section {
-    height: 640px;
-    width: 60%;
+    height: auto;
+    width: 100%;
     background-color: rgb(23, 23, 23);
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column wrap;
-    border-radius: 20px;
     margin: 30px auto;
     padding: 5% 10%;
  
    
   }
+<<<<<<< HEAD
  
+=======
+>>>>>>> c381fb3452f3d6d78475d41ae40a011cc7123405
 td{
   line-height: 50px;
   text-align: center;
+}
+button{
+  width: 100%;
 }
