@@ -12,14 +12,11 @@ section {
  
    
   }
-<<<<<<< HEAD
  
-=======
->>>>>>> c381fb3452f3d6d78475d41ae40a011cc7123405
 td{
   line-height: 50px;
   text-align: center;
 }
-button{
+button ,input.btn{
   width: 100%;
 }
