@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AdminComponent implements OnInit{
   // Formulario de nuevo usuario
   usuarioForm: FormGroup;
-  userForm: boolean = true;
+  userForm: boolean = false;
 
   usuarios: any; 
 
@@ -102,6 +102,27 @@ export class AdminComponent implements OnInit{
         console.log(response);
         this.actualizarUsuarios();
         // Realizar cualquier acción adicional necesaria, como actualizar la lista de usuarios
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  modificarUsuario(id: number) {
+    // Obtener el usuario actual a partir del id
+    const usuarioActual = this.usuarios.find((usuario: any) => usuario.id === id);
+  
+    if (!usuarioActual) {
+      return;
+    }
+  
+    // Realizar cualquier lógica adicional para obtener los datos modificados del usuario
+  
+    // Llamar al servicio para modificar el usuario
+    this.user.modificarUsuario(id, usuarioActual).subscribe(
+      (response) => {
+        console.log(response);
+        this.actualizarUsuarios(); // Actualizar la lista de usuarios después de la modificación
       },
       (error) => {
         console.error(error);
