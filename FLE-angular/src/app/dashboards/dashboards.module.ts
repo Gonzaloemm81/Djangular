@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -11,7 +13,9 @@ import { UserComponent } from './user/user.component';
     UserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   exports: [
     AdminComponent, 

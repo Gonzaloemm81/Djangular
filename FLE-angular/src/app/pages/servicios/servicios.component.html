@@ -1,13 +1,13 @@
 <section class="secCol3">
   <div *ngFor="let api of serv" class="card">
     <div>
-      <h4>{{ api.title }}</h4>
+      <h4>{{ api.nombre_servicio }}</h4>
       <p>
-        {{ api.description }}
+        {{ api.descripcion_serv }}
       </p>
     </div>
     <div>
-      <h5>Hasta: {{ api.price | currency }}</h5>
+      <h5>Hasta: {{ api.precio_kg_km | currency }}</h5>
       <button type="submit" href="carrito">Contratar</button><br />
     </div>
   </div>

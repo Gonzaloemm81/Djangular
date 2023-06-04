@@ -6,10 +6,10 @@ import{Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-url:String = 'http://localhost:3000/'
+url:String = 'http://localhost:8000/'
   constructor(private http:HttpClient) { }
 
   obtenerServicios():Observable <any>{
-    return this.http.get(this.url + 'productos');
+    return this.http.get(this.url + 'api/servicios/');
   }
 }
