@@ -98,33 +98,26 @@
     <thead>
       <tr>
         <td colspan="3"><h2>Tabla Usuarios</h2></td>
-        <td colspan="3">
+        <td colspan="1">
           <button class="btn btn-warning" (click)="abrirForm()">
             Añadir Usuario
           </button>
         </td>
       </tr>
       <tr>
-        <th>ID</th>
         <th>Nombre</th>
         <th>Email</th>
         <th>Es empleado</th>
-        <th>Modificar</th>
         <th>Eliminar</th>
       </tr>
     </thead>
     <tbody *ngFor="let user of usuarios">
       <tr>
-        <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <td *ngIf="user.is_staff">Si</td>
         <td *ngIf="!user.is_staff">No</td>
-        <td>
-          <button id="4" class="btn btn-warning">
-            Modificar
-          </button>
-        </td>
+        
         <td><button class="btn btn-danger" (click)="eliminarUsuario(user.id)">Eliminar</button></td>
       </tr>
     </tbody>
