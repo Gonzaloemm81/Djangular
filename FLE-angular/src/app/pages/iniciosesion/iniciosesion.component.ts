@@ -1,43 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/Auth/auth.service';
+import { Usuario } from 'src/app/services/usuario2.service';
 @Component({
   selector: 'app-iniciosesion',
   templateUrl: './iniciosesion.component.html',
   styleUrls: ['./iniciosesion.component.css']
 })
 
-export class IniciosesionComponent implements OnInit{
+export class IniciosesionComponent implements OnInit {
   recordarme: boolean = false;
   iniciosesionForm: FormGroup
-  constructor(private formBuilder: FormBuilder){
-  this.iniciosesionForm = this.formBuilder.group({
-    user:['',[Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],  
-    password:['',[Validators.required, Validators.minLength(8)]],
+  usuario: Usuario = new Usuario();
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    this.iniciosesionForm = this.formBuilder.group({
+      user: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
 
-})};
+    })
+  };
 
-get User()
-{
-  return this.iniciosesionForm.get('user');
-}
-get Password()
-{
-  return this.iniciosesionForm.get('password');
-}
-onEnviar(event: Event)
-{
-  event.preventDefault();
-  if (this.iniciosesionForm.valid)
-  {
-    alert('Enviando al servidor pa...')
-    this.iniciosesionForm.reset()
+
+  ngOnInit(): void { }
+  get User() {
+    return this.iniciosesionForm.get('user');
   }
-  else{
-    this.iniciosesionForm.markAllAsTouched();
+  get Password() {
+    return this.iniciosesionForm.get('password');
   }
+  onEnviar(event: Event, usuario: Usuario): void {
+    event.preventDefault();
+    this.authService.login(this.usuario).subscribe(
+      data => {
+        console.log('DATA' + JSON.stringify(data));
 
 
-}
-ngOnInit(): void {}
+        this.router.navigate(['/calculadora'])
 
+      },
+      error => {
+        console.log(error);
+      }
+
+    )
+
+  }
 }
