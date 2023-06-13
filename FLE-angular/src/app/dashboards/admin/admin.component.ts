@@ -40,18 +40,6 @@ export class AdminComponent implements OnInit{
     
     
   }
-  actualizarUsuarios() {
-    this.user.obtenerUsuarios().subscribe({
-      next: (userData) => {
-        this.usuarios = userData;
-      },
-      error: (errorData) => {
-        console.error(errorData);
-      }
-    });
-  }
-
-
   //Eliminar usuarios DELETE http 
   get User(){
     return this.usuarioForm.get('user');
@@ -67,6 +55,18 @@ export class AdminComponent implements OnInit{
     this.userForm = !this.userForm
   }
   
+  actualizarUsuarios() {
+    this.user.obtenerUsuarios().subscribe({
+      next: (userData) => {
+        this.usuarios = userData;
+      },
+      error: (errorData) => {
+        console.error(errorData);
+      }
+    });
+  }
+
+
   
 
   ngOnInit(): void {
@@ -74,6 +74,7 @@ export class AdminComponent implements OnInit{
 
   agregarUsuario() {
     if (this.usuarioForm.invalid) {
+      this.usuarioForm.markAllAsTouched(); // Clear
       return;
     }
 
@@ -89,6 +90,8 @@ export class AdminComponent implements OnInit{
         // Manejar la respuesta exitosa
         console.log(response);
         this.actualizarUsuarios() // Limpiar el formulario después de enviarlo
+        alert("¡Usuario creado con éxito!")
+        this.usuarioForm.reset();
       },
       error => {
         // Manejar el error

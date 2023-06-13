@@ -2,33 +2,9 @@
   <h1 class="display-5">Iniciar sesión</h1>
   <form
     [formGroup]="iniciosesionForm"
-    (ngSubmit)="onEnviar($event,  usuario)"
+    (ngSubmit)="onEnviar($event, usuario)"
     class="mt-4"
   >
-    <!-- <div class="form-group">
-      <input
-        type="text"
-        placeholder="usuario"
-        id="usuario"
-        formControlName="user"
-        class="form-control"
-      />
-      <div *ngIf="User?.errors && User?.touched">
-        <p *ngIf="User?.hasError('required')" class="text-danger">
-          El usuario es obligatorio.
-        </p>
-        <p *ngIf="User?.errors?.['minlength']" class="text-danger">
-          El usuario debe contener almenos 8 caracteres.
-        </p>
-        <p *ngIf="User?.errors?.['maxlength']" class="text-danger">
-          El usuario debe contener máximo 20 caracteres.
-        </p>
-        <p *ngIf="User?.errors?.['pattern']" class="text-danger">
-          El usuario solo debe contener letras y/o números.
-        </p>
-      </div>
-    </div> -->
-
     <div class="form-group mt-2">
       <input
         type="email"

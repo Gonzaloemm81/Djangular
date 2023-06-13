@@ -1,7 +1,8 @@
 section{
     height: auto;
     width: 60%;
-    background-color: white;
+    background-color: rgb(255, 119, 0);
+    color: black;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -10,9 +11,6 @@ section{
     border-radius: 20px;
     margin: 30px auto;
     padding: 5% 10%;
-}
-.secCol3{
-    background-color: rgb(255, 119, 0);
 }
 input{
     margin-top: 0.5rem;
@@ -47,6 +45,17 @@ button:hover{
 .botonIngresar{
     background-color: rgb(255, 119, 0);
 }
+
+ 
+td{
+  line-height: 50px;
+  text-align: center;
+}
+button ,input.btn{
+  width: 100%;
+}
+
+
 @media (min-width: 320px) and (max-width: 768px) {
     section {
       width: 100%;

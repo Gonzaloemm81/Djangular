@@ -2,28 +2,29 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
-import { Usuario } from '../usuario2.service';
+import { Usuario } from '../usuario.class';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  url='https://reqres.in/api/login/';
+  url='http://localhost:8000/auth/login/';
 
   currentUserSubject: BehaviorSubject<Usuario>;
   currentUser: Observable<Usuario>;
   loggedIn:any;
 
   constructor(private http:HttpClient) {
-    console.log('Servicio de autenticacion esta corriendo');
+    console.log('Servicio de Autenticacion esta corriendo');
 
     this.currentUserSubject = new BehaviorSubject<Usuario>(JSON.parse(localStorage.getItem('currentUser')|| '{}'));
 
     this.currentUser = this.currentUserSubject.asObservable();
    }
+
    login(usuario:Usuario): Observable<any>{
     return this.http.post<any>(this.url,usuario)
     .pipe(map(data=>

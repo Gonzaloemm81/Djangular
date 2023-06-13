@@ -1,144 +1,97 @@
-<section class="secCol3">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 registro-form-header">
-        <p class="registro-form-font-header">Registro<span> Usuario</span></p>
+<section>
+  <div>
+    <form
+      [formGroup]="usuarioForm"
+      action=""
+      class="container"
+      (ngSubmit)="agregarUsuario()"
+    >
+      <h2>Nuevo Usuario</h2>
+      <label for="usuario">Usuario:</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="user"
+        id="usuario"
+      />
+      <div *ngIf="User?.errors && User?.touched">
+        <p *ngIf="User?.hasError('required')" class="text-danger">
+          El usuario es obligatorio.
+        </p>
+        <p *ngIf="User?.errors?.['minlength']" class="text-danger">
+          El usuario debe contener almenos 6 caracteres.
+        </p>
+        <p *ngIf="User?.errors?.['maxlength']" class="text-danger">
+          El usuario debe contener un maximo de 20 caracteres.
+        </p>
+        <p *ngIf="User?.errors?.['pattern']" class="text-danger">
+          El usuario debe contener solamente letras y/o numeros.
+        </p>
       </div>
-    </div>
-    <div class="row m-3">
-      <div class="col-md-12 registro-form">
-        <form [formGroup]="form" class="form" (ngSubmit)="onEnviar($event, usuario)">
-          <div class="m-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" id="nombre" class="form-control" formControlName="nombre" [(ngModel)]="usuario.nombre"
-              [class.border-danger]="NombreValid">
-            <div *ngIf="Nombre?.errors && Nombre?.touched">
-              <p *ngIf="Nombre?.hasError('required')" class="text-danger">
-                El nombre es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" id="apellido" class="form-control" formControlName="apellido"
-              [(ngModel)]="usuario.apellido" [class.border-danger]="ApellidoValid">
-            <div *ngIf="Apellido?.errors && Apellido?.touched">
-              <p *ngIf="Apellido?.hasError('required')" class="text-danger">
-                El apellido es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="dni" class="form-label">Dni</label>
-            <input type="number" id="dni" class="form-control" formControlName="dni" [(ngModel)]="usuario.dni"
-              [class.border-danger]="DniValid">
-            <div *ngIf="Dni?.errors && Dni?.touched">
-              <p *ngIf="Dni?.hasError('required')" class="text-danger">
-                El dni es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="dni" class="form-label">Fecha de Nacimiento</label>
-            <input type="date" id="fecha_nacimiento" class="form-control" formControlName="fechaNacimiento"
-              [(ngModel)]="usuario.fechaNacimiento" [class.border-danger]="FechaNacimientoValid">
-            <div *ngIf="FechaNacimiento?.errors && FechaNacimiento?.touched">
-              <p *ngIf="FechaNacimiento?.hasError('required')" class="text-danger">
-                La fecha de nacimiento es requerida.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="dni" class="form-label">Correo electronico</label>
-            <input type="email" id="email" class="form-control" formControlName="email" [(ngModel)]="usuario.email"
-              [class.border-danger]="MailValid">
-            <div *ngIf="Mail?.errors && Mail?.touched">
-              <p *ngIf="Mail?.hasError('required')" class="text-danger">
-                El email es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="password1" class="form-label">Contrase'a</label>
-            <input type="password" id="password1" class="form-control" formControlName="password1"
-              [(ngModel)]="usuario.password" [class.border-danger]="Password1Valid">
-            <div *ngIf="Password1?.errors && Password1?.touched">
-              <p *ngIf="Password1?.hasError('required')" class="text-danger">
-                El password es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <label for="password2" class="form-label">Reingrese la Contrase'a</label>
-            <input type="password" id="password2" class="form-control" formControlName="password2"
-              [class.border-danger]="Password2Valid">
-            <div *ngIf="Password2?.errors && Password2?.touched">
-              <p *ngIf="Password2?.hasError('required')" class="text-danger">
-                El password es requerido.
-              </p>
-            </div>
-          </div>
-          <div class="m-3">
-            <button class="btn btn-primary mt-3">Enviar</button>
-          </div>
-        </form>
 
+      <label for="email">Email:</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="email"
+        id="email"
+      />
+      <div *ngIf="Email?.errors && Email?.touched">
+        <p *ngIf="Email?.hasError('required')" class="text-danger">
+          El email es obligatorio.
+        </p>
+        <p *ngIf="Email?.errors?.['email']" class="text-danger">
+          El correo debe ser valido.
+        </p>
       </div>
-    </div>
+
+      <label for="password">Contraseña:</label>
+      <input
+        class="form-control"
+        type="password"
+        formControlName="password"
+        id="password"
+      />
+      <div *ngIf="Password?.errors && Password?.touched">
+        <p *ngIf="Password?.hasError('required')" class="text-danger">
+          La contraseña es obligatoria.
+        </p>
+        <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+          El usuario debe contener almenos 8 caracteres.
+        </p>
+      </div>
+
+      <label for="">Es empleado:</label>
+      <br />
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-dark">
+          <input
+            formControlName="is_staff"
+            type="radio"
+            name="options"
+            id="option1"
+            autocomplete="off"
+            value="true"
+          />
+          Si
+        </label>
+        <label class="btn btn-outline-dark">
+          <input
+            formControlName="is_staff"
+            type="radio"
+            name="options"
+            id="option2"
+            autocomplete="off"
+            checked
+            value="false"
+          />
+          No
+        </label>
+      </div>
+      <br />
+      <br />
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
   </div>
 </section>
-<script src="./Javascript/formulario-registroleonel.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <form action="" method="POST" id="form">
-    <input
-      type="text"
-      placeholder="ID usuario"
-      name="ID usuario"
-      id="ID usuario"
-      required
-    />
-    <br />
-    <input
-      type="text"
-      placeholder="Usuario"
-      name="usuario"
-      id="usuario"
-      required
-    />
-    <br />
-    <input type="email" placeholder="Email" name="mail" id="mail" required />
-    <br />
-    <input
-      type="password"
-      placeholder="Contraseña"
-      name="password"
-      id="password"
-      required
-    />
-    <br />
-    <input
-      type="password"
-      placeholder="Repetir contraseña"
-      name="repetir contraseña"
-      id="repetir contraseña"
-      required
-    /><br />
-    <button type="submit">Registrarme</button><br />
-    <button class="botonIngresar" type="submit">
-      <a href="iniciosesion">Ya tengo cuenta</a></button
-    ><br />
-  </form> -->
+<

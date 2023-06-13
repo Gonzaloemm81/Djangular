@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth/auth.service';
-import { Usuario } from 'src/app/services/usuario2.service';
+import { Usuario } from 'src/app/services/usuario.class';
+
 @Component({
   selector: 'app-iniciosesion',
   templateUrl: './iniciosesion.component.html',
@@ -16,6 +17,7 @@ export class IniciosesionComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.iniciosesionForm = this.formBuilder.group({
       user: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],
+      mail: ['',[Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
 
     })
@@ -35,11 +37,11 @@ export class IniciosesionComponent implements OnInit {
       data => {
         console.log('DATA' + JSON.stringify(data));
 
-
         this.router.navigate(['/calculadora'])
-
+        
       },
       error => {
+        alert("puto")
         console.log(error);
       }
 

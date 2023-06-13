@@ -99,9 +99,12 @@
       <tr>
         <td colspan="3"><h2>Tabla Usuarios</h2></td>
         <td colspan="1">
-          <input type ="submit"class="btn btn-warning " (click)="abrirForm()" value= "{{userForm ? 'Cerrar':'Agregar Usuario'}}">
-            
-          
+          <input
+            type="submit"
+            class="btn btn-warning"
+            (click)="abrirForm()"
+            value="{{ userForm ? 'Cerrar' : 'Agregar Usuario' }}"
+          />
         </td>
       </tr>
       <tr>
@@ -117,8 +120,12 @@
         <td>{{ user.email }}</td>
         <td *ngIf="user.is_staff">Si</td>
         <td *ngIf="!user.is_staff">No</td>
-        
-        <td><button class="btn btn-danger" (click)="eliminarUsuario(user.id)">Eliminar</button></td>
+
+        <td>
+          <button class="btn btn-danger" (click)="eliminarUsuario(user.id)">
+            Eliminar
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
