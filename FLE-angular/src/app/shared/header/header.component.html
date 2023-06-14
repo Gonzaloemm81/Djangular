@@ -5,13 +5,16 @@
       src="./../../../assets/images/Logo-FLEnvios naranja.png"
       alt="logo"
     />
-    <div class="botones">
+    <div *ngIf="estado" class="botones">
       <a href="iniciosesion"
         ><button type="submit" id="ingreso">Ingresar</button></a
       >
       <a href="registro"
         ><button type="submit" id="registro">Registrarse</button></a
       >
+    </div>
+    <div *ngIf="!estado">
+      <button type="submit" id="registro" (click)="logout()">Log out</button>
     </div>
   </div>
 </header>

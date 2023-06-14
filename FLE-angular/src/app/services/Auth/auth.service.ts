@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'; 
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,15 +7,17 @@ import { map } from 'rxjs/operators';
 import { Usuario } from '../usuario.class';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  url='http://localhost:8000/auth/login/';
+  url:String = 'http://localhost:8000/'
 
   currentUserSubject: BehaviorSubject<Usuario>;
   currentUser: Observable<Usuario>;
-  loggedIn:any;
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   constructor(private http:HttpClient) {
     console.log('Servicio de Autenticacion esta corriendo');
@@ -26,7 +28,7 @@ export class AuthService {
    }
 
    login(usuario:Usuario): Observable<any>{
-    return this.http.post<any>(this.url,usuario)
+    return this.http.post<any>(this.url+'api/auth/login/', usuario)
     .pipe(map(data=>
       {
         localStorage.setItem('currentUser', JSON.stringify(data));
@@ -35,11 +37,12 @@ export class AuthService {
         this.loggedIn.next(true);
         return data;
       }))
-   }
-
-   logout():void{
-    localStorage.removeItem('currentUser');
-    this.loggedIn.next(false);
+    }
+    
+    logout():void{
+      localStorage.removeItem('currentUser');
+      this.loggedIn.next(false);
+      alert("anda")
    }
 
    get usuarioAutenticado(): Usuario{
