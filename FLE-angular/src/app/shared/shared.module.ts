@@ -6,17 +6,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    NavbarComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    HeaderComponent,FooterComponent,
-    NavbarComponent
-  ]
+    declarations: [
+        HeaderComponent,
+        NavbarComponent,
+        FooterComponent
+    ],
+    exports: [
+        HeaderComponent, FooterComponent,
+        NavbarComponent
+    ],
+    imports: [
+        CommonModule
+    ]
 })
 export class SharedModule { }

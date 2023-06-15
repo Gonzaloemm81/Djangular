@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,6 +9,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit{
+
+
   // Formulario de nuevo usuario
   usuarioForm: FormGroup;
   userForm: boolean = false;
@@ -17,7 +20,8 @@ export class AdminComponent implements OnInit{
 
   // Consumo de la Api para ver usuarios
   constructor(private user: UsuariosService, 
-            private formBuilder: FormBuilder){
+            private formBuilder: FormBuilder,
+            private communicationService: CommunicationService){
 
     // consumo de la Api para ver usuarios
     this.user.obtenerUsuarios().subscribe({
@@ -70,6 +74,7 @@ export class AdminComponent implements OnInit{
   
 
   ngOnInit(): void {
+    this.communicationService.emitComponenteCargado();
   }
 
   agregarUsuario() {

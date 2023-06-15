@@ -6,12 +6,8 @@
       alt="logo"
     />
     <div *ngIf="estado" class="botones">
-      <a href="iniciosesion"
-        ><button type="submit" id="ingreso">Ingresar</button></a
-      >
-      <a href="registro"
-        ><button type="submit" id="registro">Registrarse</button></a
-      >
+      <a href="iniciosesion"><button id="ingreso">Ingresar</button></a>
+      <a href="registro"><button id="registro">Registrarse</button></a>
     </div>
     <div *ngIf="!estado">
       <button type="submit" id="registro" (click)="logout()">Log out</button>

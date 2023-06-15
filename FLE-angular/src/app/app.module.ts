@@ -6,7 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardsModule } from './dashboards/dashboards.module';
-
+import { AuthGuard } from './services/Auth/auth.guard';
 
 
 @NgModule({
@@ -17,13 +17,12 @@ import { DashboardsModule } from './dashboards/dashboards.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule,
     PagesModule,
     AppRoutingModule,
     DashboardsModule,
-    
+    SharedModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

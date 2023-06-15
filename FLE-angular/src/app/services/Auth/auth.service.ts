@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { Usuario } from '../usuario.class';
 import { HttpClient } from '@angular/common/http';
+import { LoginStateService } from '../login-state.service';
 
 
 @Injectable({
@@ -19,7 +20,8 @@ export class AuthService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,
+              private loginState:LoginStateService) {
     console.log('Servicio de Autenticacion esta corriendo');
 
     this.currentUserSubject = new BehaviorSubject<Usuario>(JSON.parse(localStorage.getItem('currentUser')|| '{}'));
@@ -42,6 +44,8 @@ export class AuthService {
     logout():void{
       localStorage.removeItem('currentUser');
       this.loggedIn.next(false);
+      this.loginState.cambiarEstado(true);
+      console.log(this.loginState.state);
       alert("anda")
    }
 

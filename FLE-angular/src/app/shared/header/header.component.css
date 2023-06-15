@@ -20,7 +20,7 @@ button a{
     text-decoration: none;
     color:inherit
 }
-button{
+button {
     height: 3em;
     width: auto;
     background-color: rgb(73, 139, 230);

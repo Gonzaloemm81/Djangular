@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth/auth.service';
-
+import { LoginStateService } from 'src/app/services/login-state.service';
 
 @Component({
   selector: 'app-iniciosesion',
@@ -11,16 +11,18 @@ import { AuthService } from 'src/app/services/Auth/auth.service';
 })
 
 export class IniciosesionComponent implements OnInit {
+
+  
+  
   recordarme: boolean = false;
+  
   iniciosesionForm: FormGroup
-  
-  
-  
   
 
   constructor(private formBuilder: FormBuilder, 
               private authService: AuthService, 
-              private router: Router) {
+              private router: Router,
+              private loginState: LoginStateService) {
     this.iniciosesionForm = this.formBuilder.group({
       user: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^[a-zA-Z0-9]*$')]],
       email: ['',[Validators.required, Validators.email]],
@@ -29,8 +31,9 @@ export class IniciosesionComponent implements OnInit {
     })
   };
 
-
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
   get Mail(){
     return this.iniciosesionForm.get('mail');
   }
@@ -50,10 +53,12 @@ export class IniciosesionComponent implements OnInit {
       is_staff: Boolean
     }
     event.preventDefault();
-
+    
     this.authService.login(nuevoUsuario).subscribe(
       data => {
         console.log('DATA' + JSON.stringify(data));
+        this.loginState.cambiarEstado(false);
+        console.log(this.loginState.state);
         alert("gil")
         if (data.is_staff){
           this.router.navigate(['/admin']);
