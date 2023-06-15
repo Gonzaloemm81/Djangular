@@ -36,6 +36,6 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     this.estado = this.loginState.state;
     console.log(this.estado);
-    this.router.navigate(['']);
+    window.location.reload();
   }
 }

@@ -28,7 +28,12 @@ nav li a{
     text-transform: uppercase;
 
 }
-li a.active, li a:hover{
+li a:active, li a:hover{
+    background: orange;
+    transition: .5s;
+    color: black;
+}
+.botonActivo{
     background: orange;
     transition: .5s;
     color: black;

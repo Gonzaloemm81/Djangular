@@ -10,6 +10,8 @@
     <li><a href="sucursales">Sucursales</a></li>
     <li><a href="contacto">Contacto</a></li>
     <li><a href="servicios">Servicios</a></li>
-    <li><a href="carrito">Carrito</a></li>
+    <li *ngIf="!estado && !isStaffUser"><a href="carrito">Carrito</a></li>
+    <li *ngIf="!estado && isStaffUser"><a href="admin">Dashboard</a></li>
+    <li *ngIf="!estado && !isStaffUser"><a href="user">Dashboard</a></li>
   </ul>
 </nav>
