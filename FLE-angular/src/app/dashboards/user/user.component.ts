@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
   selector: 'app-user',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+
+  constructor(private communicationService: CommunicationService){}
+
+  ngOnInit() {
+    this.communicationService.emitComponenteCargado();
+  }
+
 
 }
