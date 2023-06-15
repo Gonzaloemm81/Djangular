@@ -21,8 +21,24 @@ section {
     }
     
   }
+  .slide-text {
+    position: absolute;
+    bottom: 5%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: left;
+    text-shadow: 1px 1px 2px white, 0 0 1em black, 0 0 0.2em black;
+  }
   
     @media (min-width: 320px) and (max-width: 768px) {
+    .slide-text{
+      bottom: -10%;
+      left: 40%;
+      font-size: 1.5rem;
+    }
     section {
       width: 100%;
       border-radius: 0%;
