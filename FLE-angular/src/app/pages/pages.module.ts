@@ -11,6 +11,8 @@ import { ContactoComponent } from './Contacto/contacto.component';
 import { SucursalesComponent } from './sucursales/sucursales.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 @NgModule({
   declarations: [
     RegistroComponent,
@@ -27,7 +29,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPayPalModule
   ],
   exports: [
     RegistroComponent,

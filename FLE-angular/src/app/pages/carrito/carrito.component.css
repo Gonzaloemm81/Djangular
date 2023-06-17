@@ -1,5 +1,5 @@
 section {
-    height: 640px;
+    height:auto;
     width: 60%;
     background-color: rgb(23, 23, 23);
 	color: #fff;
@@ -7,7 +7,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     border-radius: 20px;
     margin: 30px auto;
     padding: 5% 10%;
@@ -35,6 +35,9 @@ input[type="number"] {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+}
+input[type="submit"]{
+	margin-right: 10px;
 }
 
 .producto {

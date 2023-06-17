@@ -39,7 +39,7 @@ const routes: Routes = [{
   },
   {
     component: CarritoComponent,
-    path: 'carrito'
+    path: 'carrito', canActivate: [AuthGuard]
   },
   {
     component: ContactoComponent,

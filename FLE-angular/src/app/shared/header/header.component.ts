@@ -37,5 +37,6 @@ export class HeaderComponent implements OnInit {
     this.estado = this.loginState.state;
     console.log(this.estado);
     window.location.reload();
+    
   }
 }

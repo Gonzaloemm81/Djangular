@@ -36,12 +36,9 @@
     <br /><br />
     <div class="d-flex justify-content-between" *ngFor="let item of items">
       <p *ngIf="agregado">{{ item | currency }}</p>
-      <input
-        class="btn btn-outline-danger"
-        type="submit"
-        value="Quitar"
-        (click)="quitar(item)"
-      />
+      <button class="btn btn-outline-danger mb-2" (click)="quitar(item)">
+        <i class="fa fa-trash"></i>
+      </button>
     </div>
     <input
       class="btn btn-dark"
@@ -49,14 +46,21 @@
       value="Agregar al carrito"
       (click)="agregarAlCarrito()"
     />
-    <input
+  
+<!-- 
+     <button
       class="btn btn-light"
       type="submit"
-      value="Pagar MP"
-      (click)="pagar()"
-    />
-    <h3>Total a pagar:</h3>
+      
+      (click)="pagar()">Pagar
+      <i class="fa-brands fa-paypal"></i></button>
+      -->
+    
+    
+    
+    <h3 class="mt-3">Total a pagar:</h3>
     <h3>{{ total | currency }}</h3>
+    <ngx-paypal [config]="payPalConfig" (click)="pagar()"></ngx-paypal>
   </form>
 </section>
 
